@@ -1,0 +1,21 @@
+<div class="item-container">
+  <div class="ribbon-container" *ngIf="hasRibbon()">
+    <div class="ribbon">
+      <span>{{ribbon | titlecase}}</span>
+    </div>
+  </div>
+
+  <div class="item-content">
+
+    <div class="item-jackpot" *ngIf="hasJackpotAmount()">
+      <span>{{jackpotAmount | currency: 'GBP'}}</span>
+    </div>
+
+    <img [src]="src">
+
+    <div class="play">
+      <span>{{name}}</span>
+      <button mat-flat-button color="primary">Play</button>
+    </div>
+  </div>
+</div>

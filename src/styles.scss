@@ -1,1 +1,80 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$custom-light-text-color: #FCFCFC;
+$custom-dark-text-color: #272727;
+
+$custom-green: (
+  100: #e2ffa8,
+  500: #8DC63F,
+  700: #6b8b2c,
+  contrast: (
+    50: $custom-dark-text-color,
+    100: $custom-dark-text-color,
+    500: $custom-light-text-color,
+    700: $custom-light-text-color
+  )
+);
+
+$custom-black: (
+  100: #EBEBEB,
+  500: #373737,
+  700: #272727,
+  contrast: (
+    50: $custom-dark-text-color,
+    100: $custom-dark-text-color,
+    500: $custom-light-text-color,
+    700: $custom-light-text-color
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$slot-task-primary: mat.define-palette($custom-green);
+$slot-task-accent: mat.define-palette($custom-black);
+
+$primary-color: mat.get-color-from-palette($slot-task-primary);
+$accent-color: mat.get-color-from-palette($slot-task-accent);
+
+// The warn palette is optional (defaults to red).
+$slot-task-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$slot-task-theme: mat.define-light-theme((
+  color: (
+    primary: $slot-task-primary,
+    accent: $slot-task-accent,
+    warn: $slot-task-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($slot-task-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page {
+  width: 100%;
+
+  &.full-page {
+    height: 100vh;
+  }
+
+  .page-content {
+    padding: 1rem 4rem;
+  }
+}

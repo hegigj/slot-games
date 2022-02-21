@@ -1,0 +1,13 @@
+<div class="games-container">
+  <ng-container *ngFor="let game of games">
+    <div class="game">
+      <app-game-item
+        [id]="game.id"
+        [name]="game.name"
+        [src]="game.image"
+        [jackpotAmount]="game.jackpotAmount"
+        [ribbon]="game.getLabel()"
+      ></app-game-item>
+    </div>
+  </ng-container>
+</div>
