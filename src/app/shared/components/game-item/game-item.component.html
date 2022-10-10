@@ -11,7 +11,7 @@
       <span>{{jackpotAmount | currency: 'GBP'}}</span>
     </div>
 
-    <img [src]="src">
+    <img [src]="src" (error)="fallBackSrc()">
 
     <div class="play">
       <span>{{name}}</span>

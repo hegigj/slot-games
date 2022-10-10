@@ -1,5 +1,7 @@
 @import "../../../../styles";
 
-a.cdk-focused {
-  background-color: $primary-color;
+a {
+  &.active {
+    background-color: $primary-color;
+  }
 }

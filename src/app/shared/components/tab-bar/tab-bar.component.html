@@ -1,5 +1,9 @@
 <nav mat-tab-nav-bar backgroundColor="accent">
   <ng-container *ngFor="let tab of tabs">
-    <a mat-tab-link [routerLink]="[tab.routerLink]">{{tab.label}}</a>
+    <a
+      mat-tab-link
+      [routerLink]="tab.routerLink"
+      routerLinkActive="active"
+    >{{tab.label}}</a>
   </ng-container>
 </nav>

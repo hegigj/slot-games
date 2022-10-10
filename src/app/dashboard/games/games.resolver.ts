@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import {GameItem} from "../models/game-item.inteface";
-import {GamesService} from "../services/games.service";
+import {GameItem} from "../../core/models/game-item.inteface";
+import {GamesService} from "../../core/services/games.service";
 
 @Injectable({
   providedIn: 'root'

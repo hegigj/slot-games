@@ -40,7 +40,8 @@ $border-radius: 20px;
   .item-content {
     position: relative;
     border-radius: $border-radius;
-    max-width: 240px;
+    background-color: $accent-color;
+    width: 240px;
     height: 170px;
 
     .item-jackpot {
@@ -98,6 +99,6 @@ $border-radius: 20px;
   }
 
   &:hover .item-content img {
-    object-fit: fill;
+    object-fit: contain;
   }
 }
