@@ -4,13 +4,12 @@ import {environment} from "../../../environments/environment";
 import {BehaviorSubject, Observable} from "rxjs";
 import {GameItem} from "../models/game-item.inteface";
 import {tap} from "rxjs/operators";
+import {ApiConfig} from "./api.config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GamesService {
-  private readonly url: string;
-
   private gamesSubject: BehaviorSubject<GameItem[]>;
   private gameCategoriesSubject: BehaviorSubject<string[]>;
 
@@ -23,15 +22,15 @@ export class GamesService {
   }
 
   constructor(private httpClient: HttpClient) {
-    this.url = environment.apiBaseUrl + '/games.php';
-
     this.gamesSubject = new BehaviorSubject<GameItem[]>([]);
     this.gameCategoriesSubject = new BehaviorSubject<string[]>([]);
   }
 
   fetchGames(): Observable<GameItem[]> {
+    const url: string = ApiConfig.frontEndTest.games();
+
     return this.httpClient
-      .get<GameItem[]>(this.url)
+      .get<GameItem[]>(url)
       .pipe(
         tap(games => this.gamesSubject.next(games)),
         tap(games => this.mapGameCategories(games))

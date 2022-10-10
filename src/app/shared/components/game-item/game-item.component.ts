@@ -25,4 +25,8 @@ export class GameItemComponent {
   hasJackpotAmount(): boolean {
     return !!this.jackpotAmount;
   }
+
+  fallBackSrc(): void {
+    this.src = '/assets/fall-back-game-image.webp';
+  }
 }

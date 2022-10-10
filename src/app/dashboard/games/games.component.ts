@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {map, switchMap, take, tap} from "rxjs/operators";
-import {GameItem} from "../../shared/models/game-item.inteface";
-import {GameItemModel} from "../../shared/models/game-item.model";
-import {GamesService} from "../../shared/services/games.service";
-import {JackpotsService} from "../../shared/services/jackpots.service";
+import {GameItem} from "../../core/models/game-item.inteface";
+import {GameItemModel} from "../../core/models/game-item.model";
+import {GamesService} from "../../core/services/games.service";
+import {JackpotsService} from "../../core/services/jackpots.service";
 
 @UntilDestroy()
 @Component({

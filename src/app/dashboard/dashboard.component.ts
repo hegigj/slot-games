@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {GamesService} from "../shared/services/games.service";
+import {GamesService} from "../core/services/games.service";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {switchMap, tap} from "rxjs/operators";
-import {JackpotsService} from "../shared/services/jackpots.service";
+import {switchMap} from "rxjs/operators";
+import {JackpotsService} from "../core/services/jackpots.service";
 import {interval} from "rxjs";
 
 @UntilDestroy()

@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {GameJackpot} from "../models/game-jackpot.interface";
 import {tap} from "rxjs/operators";
+import {ApiConfig} from "./api.config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class JackpotsService {
-  private readonly url: string;
-
   private jackpotsSubject: BehaviorSubject<GameJackpot[]>;
   private jackpotEntitySubject: BehaviorSubject<Record<string, number>>;
 
@@ -23,15 +21,15 @@ export class JackpotsService {
   }
 
   constructor(private httpClient: HttpClient) {
-    this.url = environment.apiBaseUrl + '/jackpots.php'
-
     this.jackpotsSubject = new BehaviorSubject<GameJackpot[]>([]);
     this.jackpotEntitySubject = new BehaviorSubject<Record<string, number>>({});
   }
 
   fetchJackpots(): Observable<GameJackpot[]> {
+    const url: string = ApiConfig.frontEndTest.jackpots();
+
     return this.httpClient
-      .get<GameJackpot[]>(this.url)
+      .get<GameJackpot[]>(url)
       .pipe(
         tap(jackpots => this.jackpotsSubject.next(jackpots)),
         tap(jackpots => this.mapToEntity(jackpots))
